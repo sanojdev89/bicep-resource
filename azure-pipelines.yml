@@ -1,0 +1,24 @@
+trigger:
+- main  # Adjust the branch name according to your repository's default branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # You can change the image if needed
+
+steps:
+- task: UseAzureCLI@2
+  inputs:
+    azureSubscription: '<Azure-Service-Connection>'  # Replace with your Azure Service Connection name
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      # Login to Azure (it will use the service connection to authenticate)
+      echo "Logging into Azure..."
+      az account set --subscription $(azureSubscription)
+      
+      # Deploy the Bicep file
+      echo "Deploying Bicep file..."
+      az deployment sub create \
+        --location eastus \
+        --template-file ./main.bicep   # Adjust the path if necessary to your bicep file
+      
+    displayName: 'Deploy Bicep File'
