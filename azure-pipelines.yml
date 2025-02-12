@@ -1,22 +1,10 @@
-trigger:
-- main  # Trigger on changes to the main branch
+trigger: none
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: ubuntu-latest
 
-variables:
-  resourceGroupName: 'test-rg'  # Replace with your resource group name
-  bicepFilePath: 'main.bicep'  # Replace with the path to your Bicep file
-
-steps:
-- task: AzureCLI@2
-  displayName: 'Deploy Bicep File'
-  inputs:
-    connectedServiceNameARM: 'git_connection'  # This is the name of your Azure Service Connection
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      # Deploy Bicep file
-      az deployment group create \
-        --resource-group $(resourceGroupName) \
-        --template-file $(bicepFilePath)
+jobs:
+- job:
+  steps:
+  - script: echo Hello world!
+    displayName: 'Placeholder step'
