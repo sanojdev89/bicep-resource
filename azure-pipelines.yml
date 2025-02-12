@@ -13,7 +13,7 @@ steps:
     inlineScript: |
       # Login to Azure (it will use the service connection to authenticate)
       echo "Logging into Azure..."
-      az account set --subscription $(azureSubscription)
+      az account set --subscription 'sanoj'
       
       # Deploy the Bicep file
       echo "Deploying Bicep file..."
