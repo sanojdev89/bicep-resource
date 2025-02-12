@@ -5,7 +5,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  azureSubscription: 'sanoj'  # Replace with your Azure Subscription name
   resourceGroupName: 'test-rg'  # Replace with your resource group name
   bicepFilePath: 'main.bicep'  # Replace with the path to your Bicep file
 
@@ -13,7 +12,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Deploy Bicep File'
   inputs:
-    azureSubscription: 'sanoj'
+    connectedServiceNameARM: 'git_connection'  # This is the name of your Azure Service Connection
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
