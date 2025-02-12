@@ -7,7 +7,7 @@ pool:
 steps:
 - task: UseAzureCLI@2
   inputs:
-    azureSubscription: '<Azure-Service-Connection>'  # Replace with your Azure Service Connection name
+    azureSubscription: 'git_connection'  # Replace with your Azure Service Connection name
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
